@@ -1,0 +1,33 @@
+name: CI/CD para Railway
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build com Maven
+        run: mvn clean install
+
+      - name: Testes
+        run: mvn test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy no Railway
+        uses: railwayapp/railway-action@v0.3.0
+        with:
+          railwayToken: ${{ secrets.RAILWAY_TOKEN }}
