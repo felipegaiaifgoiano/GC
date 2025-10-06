@@ -35,8 +35,10 @@ jobs:
       - name: Instalar Railway CLI
         run: npm install -g @railway/cli
 
+      - name: Copiar artefato do Maven
+        run: cp backend/deploy-railway/target/*.jar app.jar
+
       - name: Deploy no Railway
-        working-directory: backend/deploy-railway
         run: railway up --service backend-service --ci
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
