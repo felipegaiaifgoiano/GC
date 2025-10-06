@@ -1,0 +1,8 @@
+{
+  "build": {
+    "command": "echo 'skip build'"
+  },
+  "deploy": {
+    "startCommand": "java -jar backend/deploy-railway/target/backend-0.0.1-SNAPSHOT.jar"
+  }
+}
