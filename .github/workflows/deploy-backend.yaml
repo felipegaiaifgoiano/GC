@@ -28,6 +28,6 @@ jobs:
     needs: build
     steps:
       - name: Deploy no Railway
-        uses: railwayapp/railway-action@v0.3.0
+        uses: railwayapp/railway-action@v2
         with:
           railwayToken: ${{ secrets.RAILWAY_TOKEN }}
