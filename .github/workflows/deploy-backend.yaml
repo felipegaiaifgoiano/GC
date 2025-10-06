@@ -44,10 +44,10 @@ jobs:
           name: backend-jar
           path: backend-jar
 
-      - name: Instalar Railway CLI
+      - name: Instalar o Railway CLI
         run: npm install -g @railway/cli
 
-      - name: Copiar artefato do Maven
+      - name: Copiar o artefato do Maven
         run: cp backend-jar/*.jar app.jar
 
       - name: Deploy no Railway
