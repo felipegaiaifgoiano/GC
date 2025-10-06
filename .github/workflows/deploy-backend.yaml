@@ -18,9 +18,11 @@ jobs:
           java-version: '17'
 
       - name: Build com Maven
+        working-directory: backend/deploy-railway
         run: mvn clean install
 
       - name: Testes
+        working-directory: backend/deploy-railway
         run: mvn test
 
   deploy:
