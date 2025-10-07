@@ -48,7 +48,7 @@ jobs:
         run: npm install -g @railway/cli
 
       - name: Copiar o artefato do Maven
-        run: cp backend-jar/*.jar deploy-railway/
+        run: cp backend-jar/*.jar app.jar
 
       - name: Deploy no Railway
         run: railway up --service backend-service --ci
