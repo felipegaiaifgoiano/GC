@@ -51,6 +51,6 @@ jobs:
         run: cp backend-jar/*.jar app.jar
 
       - name: Deploy no Railway
-        run: railway run java -jar app.jar --service backend-service --environment production --ci
+        run: railway run java -jar app.jar --service backend-service --project 31ca6a7f-d24a-45bd-b053-d2796a53c082 --environment production --ci
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
