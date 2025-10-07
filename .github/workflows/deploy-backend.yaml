@@ -47,7 +47,7 @@ jobs:
       - name: Instalar o Railway CLI
         run: npm install -g @railway/cli
 
-      - name: Copiar o artefato do Maven
+      - name: Copiar o artefato jar
         run: cp backend-jar/*.jar app.jar
 
       - name: Deploy no Railway
