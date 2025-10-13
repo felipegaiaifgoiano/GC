@@ -49,6 +49,11 @@ jobs:
 
       - name: Copiar o artefato jar
         run: cp backend-jar/*.jar app.jar
+        
+      - name: Testar autenticação no Railway
+        run: railway status
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
       - name: Deploy no Railway
         run: railway run --service backend-service -- java -jar app.jar --ci
