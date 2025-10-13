@@ -1,4 +1,4 @@
-package com.example;
+package com.backend;
 
 public class App {
     public static void main(String[] args) {
