@@ -32,6 +32,7 @@ jobs:
           path: backend/deploy-railway/target/*.jar
           
       - name: Gerar documentação JavaDoc
+        working-directory: backend/deploy-railway
         run: mvn clean javadoc:javadoc
 
       - name: Upload da documentação
