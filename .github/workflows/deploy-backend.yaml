@@ -46,6 +46,7 @@ jobs:
 
       - name: Upload da documentação
         uses: actions/upload-pages-artifact@v3
+        working-directory: backend/deploy-railway
         with:
           path: site
 
