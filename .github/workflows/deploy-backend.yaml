@@ -31,6 +31,10 @@ jobs:
           name: backend-jar
           path: backend/deploy-railway/target/*.jar
           
+      - name: Gerar documentação JavaDoc
+        working-directory: backend/deploy-railway
+        run: mvn clean javadoc:javadoc
+          
       - name: Organizar relatórios e documentação
         run: |
           mkdir -p site/tests
@@ -38,10 +42,6 @@ jobs:
           cp -r target/site/* site/tests || true
           cp -r target/site/apidocs/* site/javadoc || true
           echo "<h1>Documentação e Relatórios</h1><ul><li><a href='javadoc/index.html'>📘 Javadoc</a></li><li><a href='tests/surefire-report.html'>🧪 Relatórios de Teste</a></li></ul>" > site/index.html
-          
-      - name: Gerar documentação JavaDoc
-        working-directory: backend/deploy-railway
-        run: mvn clean javadoc:javadoc
 
       - name: Upload da documentação
         uses: actions/upload-pages-artifact@v3
