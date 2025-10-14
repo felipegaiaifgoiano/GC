@@ -36,6 +36,7 @@ jobs:
         run: mvn clean javadoc:javadoc
           
       - name: Organizar relatórios e documentação
+        working-directory: backend/deploy-railway
         run: |
           mkdir -p site/tests
           mkdir -p site/javadoc
@@ -46,7 +47,7 @@ jobs:
       - name: Upload da documentação
         uses: actions/upload-pages-artifact@v3
         with:
-          path: target/site/apidocs
+          path: site
 
   deploy:
     runs-on: ubuntu-latest
