@@ -2,7 +2,7 @@ name: CI/CD para Railway
 
 on:
   push:
-    branches: [ "tests" ]
+    branches: [ "doc-report" ]
 
 jobs:
   build:
@@ -30,10 +30,22 @@ jobs:
         with:
           name: backend-jar
           path: backend/deploy-railway/target/*.jar
+          
+      - name: Gerar documentação JavaDoc
+        run: mvn clean javadoc:javadoc
+
+      - name: Upload da documentação
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: target/site/apidocs
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -59,3 +71,7 @@ jobs:
         run: railway run --service backend-service -- java -jar app.jar --ci
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          
+      - name: Deploy para GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
