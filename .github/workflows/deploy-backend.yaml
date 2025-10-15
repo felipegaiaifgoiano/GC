@@ -26,11 +26,12 @@ jobs:
         working-directory: backend/deploy-railway
         run: mvn clean install
 
-      - name: Testes
+      - name: Executar os testes e gera o relatório HTML
         working-directory: backend/deploy-railway
-        run: mvn test
+        run: mvn verify
+        # run: mvn test --> executa apenas a fase de testes
         
-      - name: Upload do artefato gerado via Maven
+      - name: Upload do artefato de deploy gerado via Maven
         uses: actions/upload-artifact@v4
         with:
           name: backend-jar
