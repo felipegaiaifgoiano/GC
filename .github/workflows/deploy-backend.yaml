@@ -26,9 +26,9 @@ jobs:
         working-directory: backend/deploy-railway
         run: mvn clean install
 
-      - name: Executar os testes e gera o relatório HTML
+      - name: Executar testes e gerar relatório HTML
         working-directory: backend/deploy-railway
-        run: mvn verify
+        run: mvn verify site surefire-report:report-only
         # run: mvn test --> executa apenas a fase de testes
         
       - name: Upload do artefato de deploy gerado via Maven
