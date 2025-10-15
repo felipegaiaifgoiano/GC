@@ -53,19 +53,21 @@
     			<failOnError>false</failOnError>
   			</configuration>
 		</plugin>
+    	<plugin>
+      		<groupId>org.apache.maven.plugins</groupId>
+      		<artifactId>maven-site-plugin</artifactId>
+      		<version>3.12.1</version>
+    	</plugin>
     </plugins>
   </build>
 
   <reporting>
     <plugins>
 		<plugin>
-  			<groupId>org.apache.maven.plugins</groupId>
-  			<artifactId>maven-surefire-report-plugin</artifactId>
-  			<version>3.2.5</version>
-  			<configuration>
-    			<linkXRef>false</linkXRef>
-  			</configuration>
-		</plugin>
+      		<groupId>org.apache.maven.plugins</groupId>
+      		<artifactId>maven-surefire-report-plugin</artifactId>
+      		<version>3.2.5</version>
+    	</plugin>
     </plugins>
   </reporting>
 </project>

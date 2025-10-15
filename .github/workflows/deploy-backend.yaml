@@ -48,7 +48,7 @@ jobs:
           mkdir -p site/javadoc
           cp -r target/site/* site/tests || true
           cp -r target/site/apidocs/* site/javadoc || true
-          echo "<h1>Documentação e Relatórios</h1><ul><li><a href='javadoc/index.html'>📘 Javadoc</a></li><li><a href='tests/surefire-report.html'>🧪 Relatórios de Teste</a></li></ul>" > site/index.html
+        # echo "<h1>Documentação e Relatórios</h1><ul><li><a href='javadoc/index.html'>📘 Javadoc</a></li><li><a href='tests/surefire-report.html'>🧪 Relatórios de Teste</a></li></ul>" > site/index.html
 
       - name: Upload da documentação
         uses: actions/upload-pages-artifact@v4
