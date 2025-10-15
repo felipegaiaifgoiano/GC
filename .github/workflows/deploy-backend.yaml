@@ -44,10 +44,21 @@ jobs:
       - name: Organizar relatórios e documentação
         working-directory: backend/deploy-railway
         run: |
+          echo "📁 Listando conteúdo inicial do target/site:"
+          ls -R target/site || echo "⚠️ target/site não existe"
+
           mkdir -p site/tests
           mkdir -p site/javadoc
-          cp -r target/site/* site/tests || true
-          cp -r target/site/apidocs/* site/javadoc || true
+
+          echo "📋 Copiando relatórios de teste..."
+          cp -r target/site/* site/tests || echo "⚠️ Nenhum arquivo copiado de target/site"
+
+          echo "📋 Copiando javadoc..."
+          cp -r target/site/apidocs/* site/javadoc || echo "⚠️ Nenhum arquivo copiado de target/site/apidocs"
+
+          echo "📁 Conteúdo final da pasta site:"
+          ls -R site
+
           echo "<h1>Documentação e Relatórios</h1><ul><li><a href='javadoc/index.html'>📘 Javadoc</a></li><li><a href='tests/surefire-report.html'>🧪 Relatórios de Teste</a></li></ul>" > site/index.html
 
       - name: Upload da documentação
