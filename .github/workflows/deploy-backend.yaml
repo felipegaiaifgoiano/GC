@@ -3,6 +3,11 @@ name: CI/CD para Railway
 on:
   push:
     branches: [ "doc-report" ]
+    
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
