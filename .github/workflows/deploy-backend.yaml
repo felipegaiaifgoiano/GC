@@ -39,7 +39,7 @@ jobs:
           
       - name: Gerar documentação JavaDoc
         working-directory: backend/deploy-railway
-        run: mvn clean javadoc:javadoc
+        run: mvn javadoc:javadoc
           
       - name: Organizar relatórios e documentação
         working-directory: backend/deploy-railway
